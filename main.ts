@@ -8,5 +8,5 @@ export const handler = async (event: HelloWorld): Promise<any> => {
     console.log('Hello World!');
     // const response = JSON.stringify(event, null, 2);
     // return response;
-    return event.key1;
+    return `${event.key1} ${event.key2} ${event.key3}`;
 }
