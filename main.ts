@@ -4,9 +4,17 @@ interface HelloWorld {
     key3: string;
 }
 
-export const handler = async (event: HelloWorld): Promise<any> => {
+interface Response {
+    statusCode: number;
+    headers: any;
+    body: any;
+}
+
+export const handler = async (event: HelloWorld): Promise<Response> => {
     console.log('Hello World!');
-    // const response = JSON.stringify(event, null, 2);
-    // return response;
-    return `${event.key1} ${event.key2} ${event.key3}`;
+    return {
+        statusCode: 200,
+        headers: {'Content-Type': 'application/json'},
+        body: `${JSON.stringify(event)}`
+    };
 }
